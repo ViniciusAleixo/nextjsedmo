@@ -1,9 +1,7 @@
-
 import Head from "next/head";
-
 import Image from "next/image";
 import { Header} from '../../../components/Header/Header.js';
-
+import Link from "next/link.js";
 import styles from '../../../styles/Home.module.css';
 
 
@@ -58,7 +56,7 @@ export default function Product({data}) {
                   <p><strong>SKU: </strong>{SKU}</p>
                   <div className={styles.buttonShop}>
                   <a className={styles.btnstore} href={`https://edmoap.dearportal.com/Product/${ID}`}  target="_blank" rel="noreferrer">Go to Store</a>
-                  <a className={styles.btngoback} href="/">Go back</a>
+                  <Link className={styles.btngoback} href="/">Go back</Link>
                   </div>
                 </div>
           </div>      
