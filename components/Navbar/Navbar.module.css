@@ -1,0 +1,56 @@
+.containerNav {
+    width: 97%;
+    display: flex;
+    margin: 0 auto;
+    margin:20px;
+    justify-content: space-between;
+}
+
+.nav {
+
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+}
+
+.nav  a {
+margin-right: 30px;
+font-size: 16px;
+font-weight: 600;
+transition: 0.4s ease;   
+}
+
+.nav  a:hover {
+  color: #dedc01;  
+
+}
+
+.active {
+    color: #dedc01 !important; 
+}
+
+
+@media (max-width: 724px) {
+
+    .containerNav {
+        width: 100%;
+        margin: 0;
+        display: block;
+    }
+  .nav {
+    
+    border-top: 2px solid #dedc01;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -40px;
+    padding-top: 20px;
+  }  
+
+  .nav a {
+    padding-top: 10px;
+    font-size: 20px;
+  }
+}
+
