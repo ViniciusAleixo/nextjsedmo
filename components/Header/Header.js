@@ -23,7 +23,7 @@ export const Header = () => {
           <strong>NZ</strong> - 0800 893 488
         </h5>
         <h4 id={styles.third}>Login to see pricing</h4>
-        <a href="https://edmoap.dearportal.com/Account/Login?ReturnUrl=%2F">
+        <a href="https://edmoap.dearportal.com/Account/Login?ReturnUrl=%2F" target="_blank" rel="noreferrer">
           Go to Store
         </a>
         

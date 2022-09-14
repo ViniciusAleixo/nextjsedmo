@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image.js";
 import { Header } from "../components/Header/Header.js";
 
 
@@ -8,6 +9,7 @@ import { useRouter } from "next/router";
 
 
 import styles from "../styles/Home.module.css";
+import Image from "next/image.js";
 
 
 export async function getServerSideProps({ query: { page = 1} }) {
@@ -115,17 +117,18 @@ const lastPage = Math.ceil(data.length / 15);
                         <span>No Photo</span>
                       ) : result.Attachments[0].ContentType ===
                         "application/pdf" ? (
-                        <img
+                        <Image
                           className={styles.cardImg}
                           src={result.Attachments[1].DownloadUrl}
                           alt={result.Name}
-                         
+                          width={200} height={160}
                         />
                       ) : (
-                        <img
+                        <Image
                           className={styles.cardImg}
                           src={result.Attachments[0].DownloadUrl}
                           alt={result.Name}
+                          width={200} height={160}
                           
                         />
 
