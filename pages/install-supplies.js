@@ -3,7 +3,7 @@ import Head from "next/head";
 import Link from "next/link";
 import Image from "next/image.js";
 import { Header } from "../components/Header/Header.js";
-
+import SearchButton  from "../components/Search/Search";
 
 import { useRouter } from "next/router";
 
@@ -103,10 +103,7 @@ const lastPage = Math.ceil(data.length / 15);
 
       <Header/>
         <h1 className={styles.title}>Install Supplies</h1> 
-        <form className={styles.search} >
-          <input name="search" type="search"/>
-          <button>Search</button>
-        </form>
+        <SearchButton/>
         <ul className={styles.grid}>
           {data.map((result)=> { 
            
@@ -117,25 +114,42 @@ const lastPage = Math.ceil(data.length / 15);
                 <Link href={`/product/${encodeURIComponent(result.Name)}`}>
                   <a href="#">
                     <div className={styles.containerImg}>
-                      {result.Attachments.length === 0 ? (
-                        <span>No Photo</span>
-                      ) : result.Attachments[0].ContentType ===
-                        "application/pdf" ? (
-                        <Image
-                          className={styles.cardImg}
-                          src={result.Attachments[1].DownloadUrl}
-                          alt={result.Name}
-                          width={200} height={160}
-                        />
-                      ) : (
-                        <Image
+                    {result.Attachments[0].ContentType !==
+                    "application/pdf" ? (
+                      <Image
                           className={styles.cardImg}
                           src={result.Attachments[0].DownloadUrl}
                           alt={result.Name}
-                          width={200} height={160}
+                          width={140} height={110}
+                          
                         />
-
-                      )}
+                    ) : result.Attachments[1].ContentType !==
+                    "application/pdf" ? (
+                    <Image
+                      className={styles.cardImg}
+                      src={result.Attachments[1].DownloadUrl}
+                      alt={result.Name}
+                      width={140} height={110}
+                     
+                    />
+                  ) : result.Attachments[1].ContentType ===
+                  "application/pdf" ? (
+                    <Image
+                      className={styles.cardImg}
+                      src={result.Attachments[2].DownloadUrl}
+                      alt={result.Name}
+                      width={140} height={110}
+                     
+                    />
+                  ) : result.Attachments.length === 0 ? (
+                    <span>No Photo</span>
+                  ) : ( <Image
+                    className={styles.cardImg}
+                    src={result.Attachments[0].DownloadUrl}
+                    alt={result.Name}
+                    width={140} height={110}
+                    
+                  />)}
                     </div>
                     <h3>{result.Name}</h3>
                     <p>Category: {result.Category}</p>

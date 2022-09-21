@@ -32,25 +32,36 @@ transition: 0.4s ease;
 
 @media (max-width: 724px) {
 
-    .containerNav {
-        width: 100%;
-        margin: 0;
-        display: block;
-    }
-  .nav {
-    
-    border-top: 2px solid #dedc01;
-    flex-direction: column;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: -40px;
-    padding-top: 20px;
-  }  
-
-  .nav a {
-    padding-top: 10px;
-    font-size: 20px;
+  .containerNav {
+      width: 100%;
+      margin: 0;
+      display: block;
   }
+.nav {
+  
+  border-top: 2px solid #dedc01;
+  overflow: hidden;
+  width: 100%;
+  margin-bottom: -40px;
+  padding-top: 20px;
+}  
+
+.nav a {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-top: 10px;
+  font-size: 11px;
+  text-align: center;
+  width: 100%;
+}
+.nav a:nth-child(2){
+  margin-left: 20px;
+}
+.nav a:first-child{
+ display: none;
+}
+
+
 }
 

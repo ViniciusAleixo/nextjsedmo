@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Header} from '../../../components/Header/Header.js';
-import Link from "next/link.js";
-import styles from '../../../styles/Home.module.css';
+import { Header} from '../../../components/Header/Header';
+import Link from "next/link";
+
+import styles from '../[slug]/Index.module.css';
 
 
 export async function getServerSideProps({params: {slug}}) {
@@ -48,15 +49,50 @@ export default function Product({data}) {
         
         <div className={styles.containerImgSingle}>
           <div className={styles.contentSingle}>
-                { Attachments.length === 0  ? <span>No Photo</span> : Attachments[0].ContentType === "application/pdf"  ? <Image className={styles.cardImgSingle} src= { Attachments[1].DownloadUrl } alt={ Name } />  : <Image className={styles.cardImgSingle} src= { Attachments[0].DownloadUrl } alt={ Name }  />}
+          {Attachments[0].ContentType !==
+                    "application/pdf" ? (
+                      <Image
+                          className={styles.cardImg}
+                          src={Attachments[0].DownloadUrl}
+                          alt={Name}
+                          width={200} height={160}
+                          
+                        />
+                    ) : Attachments[1].ContentType !==
+                    "application/pdf" ? (
+                    <Image
+                      className={styles.cardImg}
+                      src={Attachments[1].DownloadUrl}
+                      alt={Name}
+                      width={200} height={160}
+                     
+                    />
+                  ) : Attachments[1].ContentType ===
+                  "application/pdf" ? (
+                    <Image
+                      className={styles.cardImg}
+                      src={Attachments[2].DownloadUrl}
+                      alt={Name}
+                      width={200} height={160}
+                     
+                    />
+                  ) : Attachments.length === 0 ? (
+                    <span>No Photo</span>
+                  ) : ( <Image
+                    className={styles.cardImg}
+                    src={Attachments[0].DownloadUrl}
+                    alt={Name}
+                    width={200} height={160}
+                    
+                  />)}
                 <div className={styles.cardContent}>
                   <h3>{Name}</h3>
                   <p><strong>Description:</strong> {ShortDescription}</p>
                   <p><strong>Tags: </strong>{Tags}</p>
                   <p><strong>SKU: </strong>{SKU}</p>
                   <div className={styles.buttonShop}>
-                  <a className={styles.btnstore} href={`https://edmoap.dearportal.com/Product/${ID}`}  target="_blank" rel="noreferrer">Go to Store</a>
-                  <Link className={styles.btngoback} href="/">Go back</Link>
+                  <Link href={`https://edmoap.dearportal.com/Product/${ID}`} passHref target="_blank" rel="noreferrer"><a className={styles.btnstore}>Go to Store</a></Link>
+                  <Link href="/" rel="noreferrer" passHref ><a className={styles.btngoback}>Go back</a></Link>
                   </div>
                 </div>
           </div>      
