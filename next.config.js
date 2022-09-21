@@ -16,6 +16,9 @@ compiler: {
   // ssr and displayName are configured by default
   styledComponents: true,
 },
+experimental: {
+  largePageDataBytes: 16000 * 1000,
+},
 
 }
 
