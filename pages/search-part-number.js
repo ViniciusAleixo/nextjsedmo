@@ -10,35 +10,35 @@ import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps({ query: { page = 1} }) {
     const [firstGroup, secondGroup, thirdGroup, fourthGroup, fifthGroup, sixthGroup] = await Promise.all([
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=1&IncludeAttachments=true&limit=1000`,
+        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=1&IncludeAttachments=true&limit=10`,
         {
             headers: {
               "api-auth-accountid": process.env.REACT_APP_API_ID,
               "api-auth-applicationkey": process.env.REACT_APP_API_KEY,
             },
           }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=2&IncludeAttachments=true&limit=1000`,
+        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=2&IncludeAttachments=true&limit=10`,
         {
             headers: {
               "api-auth-accountid": process.env.REACT_APP_API_ID,
               "api-auth-applicationkey": process.env.REACT_APP_API_KEY,
             },
           }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=3&IncludeAttachments=true&limit=1000`,
+        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=3&IncludeAttachments=true&limit=10`,
         {
             headers: {
               "api-auth-accountid": process.env.REACT_APP_API_ID,
               "api-auth-applicationkey": process.env.REACT_APP_API_KEY,
             },
           }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=4&IncludeAttachments=true&limit=1000`,
+        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=4&IncludeAttachments=true&limit=10`,
         {
             headers: {
               "api-auth-accountid": process.env.REACT_APP_API_ID,
               "api-auth-applicationkey": process.env.REACT_APP_API_KEY,
             },
           }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=5&IncludeAttachments=true&limit=1000`,
+        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=5&IncludeAttachments=true&limit=10`,
         {
             headers: {
               "api-auth-accountid": process.env.REACT_APP_API_ID,
