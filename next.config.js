@@ -15,10 +15,8 @@ const nextConfig = {
 compiler: {
   // ssr and displayName are configured by default
   styledComponents: true,
-},
-experimental: {
-  largePageDataBytes: 16000 * 1000,
-},
+  largePageDataBytes: 160000 * 1000,
+}
 
 }
 
