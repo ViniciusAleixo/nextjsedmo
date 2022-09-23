@@ -1,4 +1,4 @@
-const siteUrl = "http://localhost:3000";
+const siteUrl = "https://nextjsedmo.vercel.app";
 
 module.exports = {
     siteUrl,
