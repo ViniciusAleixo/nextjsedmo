@@ -10,6 +10,7 @@ import logo from "../../public/edmo-logo.png"
 import NavItem from "./NavItem";
 
 const MENU_LIST = [
+  { text: "Home", href: "https://www.edmoap.com.au" },
   { text: "All Products", href: "/" },
   { text: "Avionics", href: "/avionics" },
   { text: "Install Supplies", href: "/install-supplies" },
