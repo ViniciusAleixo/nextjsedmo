@@ -53,6 +53,7 @@ const {Products = []} = data;
           content="EDMO, the most trusted name in aviation for aircraft electronics, install supplies, wire and cable, tooling, test equipment, tactical communication, pilot."
           key="desc"
         />
+        <meta name="google-site-verification" content="05vD2nTkIZjKsQHPE-R65CG0c4WBMr7f1x5My4a2s24" />
       </Head>
 
       <main>
