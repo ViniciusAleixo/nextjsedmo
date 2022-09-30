@@ -44,7 +44,11 @@ export default function Product({data}) {
       <Head>
       <title>{Name}</title>
       </Head>
-      
+      <meta
+          name="description"
+          content={ShortDescription}
+          key="desc"
+        />
       <main>
         
         <div className={styles.containerImgSingle}>

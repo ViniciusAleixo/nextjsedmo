@@ -112,7 +112,12 @@ export default function Home() {
   return (
     <div className="styles.container">
       <Head>
-        <title>EdmoAP Products</title>
+      <title>EDMO | Avionics, Test Equipment, Install Supplies & Pilot Supplies</title>
+        <meta
+          name="description"
+          content="EDMO, the most trusted name in aviation for aircraft electronics, install supplies, wire and cable, tooling, test equipment, tactical communication, pilot."
+          key="desc"
+        />
       </Head>
 
       <main>
