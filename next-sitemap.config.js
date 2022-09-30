@@ -1,4 +1,4 @@
-const siteUrl = "https://nextjsedmo.vercel.app";
+const siteUrl = "https://products.edmoap.com.au";
 
 module.exports = {
     siteUrl,

@@ -111,42 +111,15 @@ const lastPage = Math.ceil(data.length / 15);
                 <Link href={`/product/${encodeURIComponent(result.Name)}`}>
                   <a href="#">
                     <div className={styles.containerImg}>
-                    {result.Attachments[0].ContentType !==
-                    "application/pdf" ? (
-                      <Image
-                          className={styles.cardImg}
-                          src={result.Attachments[0].DownloadUrl}
-                          alt={result.Name}
-                          width={140} height={110}
-                          
-                        />
-                    ) : result.Attachments[1].ContentType !==
-                    "application/pdf" ? (
-                    <Image
-                      className={styles.cardImg}
-                      src={result.Attachments[1].DownloadUrl}
-                      alt={result.Name}
-                      width={140} height={110}
-                     
-                    />
-                  ) : result.Attachments[1].ContentType ===
-                  "application/pdf" ? (
-                    <Image
-                      className={styles.cardImg}
-                      src={result.Attachments[2].DownloadUrl}
-                      alt={result.Name}
-                      width={140} height={110}
-                     
-                    />
-                  ) : result.Attachments.length === 0 ? (
+                    {result.Attachments.length === 0  ? (
                     <span>No Photo</span>
-                  ) : ( <Image
+                  ) :  <Image
                     className={styles.cardImg}
                     src={result.Attachments[0].DownloadUrl}
                     alt={result.Name}
-                    width={140} height={110}
+                    width={110} height={140}
                     
-                  />)}
+                  /> }
                     </div>
                     <h3>{result.Name}</h3>
                     <p>Category: {result.Category}</p>

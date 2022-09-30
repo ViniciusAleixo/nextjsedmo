@@ -66,13 +66,14 @@ const {Products = []} = data;
                 <Link href={`/product/${encodeURIComponent(result.Name)}`} passHref>
                   <a href="#">
                     <div className={styles.containerImg}>
-                    {result.Attachments.length === 0 && result.Attachments[0].ContentType === "application/pdf" ? (
+                    {result.Attachments.length === 0  ? (
                     <span>No Photo</span>
                   ) :  <Image
                     className={styles.cardImg}
                     src={result.Attachments[0].DownloadUrl}
                     alt={result.Name}
-                    width={140} height={110}
+                    width={140} height={140}
+                    layout="intrinsic"
                     
                   /> }
                     </div>

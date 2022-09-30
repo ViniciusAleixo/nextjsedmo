@@ -58,7 +58,7 @@ export const getServerSideProps = async (context) => {
     data.push(...first.Products, ...second.Products, ...third.Products, ...fourth.Products, ...fifth.Products, ...sixth.Products)
 console.log(data);
     const fields = data.map((product) => ({
-        loc: `https://nextjsedmo.vercel.app/product/${encodeURIComponent(product.Name)}`, lastmod: new Date().toISOString(),
+        loc: `https://products.edmoap.com.au/product/${encodeURIComponent(product.Name)}`, lastmod: new Date().toISOString(),
     }));
 
     console.log(fields);

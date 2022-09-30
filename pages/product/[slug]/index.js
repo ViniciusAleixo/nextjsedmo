@@ -49,42 +49,15 @@ export default function Product({data}) {
         
         <div className={styles.containerImgSingle}>
           <div className={styles.contentSingle}>
-          {Attachments[0].ContentType !==
-                    "application/pdf" ? (
-                      <Image
-                          className={styles.cardImg}
-                          src={Attachments[0].DownloadUrl}
-                          alt={Name}
-                          width={200} height={160}
-                          
-                        />
-                    ) : Attachments[1].ContentType !==
-                    "application/pdf" ? (
-                    <Image
-                      className={styles.cardImg}
-                      src={Attachments[1].DownloadUrl}
-                      alt={Name}
-                      width={200} height={160}
-                     
-                    />
-                  ) : Attachments[1].ContentType ===
-                  "application/pdf" ? (
-                    <Image
-                      className={styles.cardImg}
-                      src={Attachments[2].DownloadUrl}
-                      alt={Name}
-                      width={200} height={160}
-                     
-                    />
-                  ) : Attachments.length === 0 ? (
+          {Attachments.length === 0  ? (
                     <span>No Photo</span>
-                  ) : ( <Image
+                  ) :  <Image
                     className={styles.cardImg}
                     src={Attachments[0].DownloadUrl}
                     alt={Name}
-                    width={200} height={160}
+                    width={140} height={110}
                     
-                  />)}
+                  /> }
                 <div className={styles.cardContent}>
                   <h3>{Name}</h3>
                   <p><strong>Description:</strong> {ShortDescription}</p>

@@ -1,30 +1,61 @@
+import { useState } from 'react';
 import Link from "next/link";
-import { useRouter } from 'next/router';
 import Image from 'next/image';
 import logo from "../../public/edmo-logo.png"
-import styles from '../Navbar/Navbar.module.css';
 
-function Navbar() {
-    const {asPath} = useRouter();
+
+
+
+
+import NavItem from "./NavItem";
+
+const MENU_LIST = [
+  { text: "All Products", href: "/" },
+  { text: "Avionics", href: "/avionics" },
+  { text: "Install Supplies", href: "/install-supplies" },
+  { text: "Pilot Supplies", href: "/pilot-supplies" },
+  { text: "Test Equipment", href: "/test-equipment" },
+  { text: "Tools", href: "/tools" },
+
+];
+const Navbar = () => {
+  const [navActive, setNavActive] = useState(null);
+  const [activeIdx, setActiveIdx] = useState(-1);
+
   return (
-    <div className={styles.containerNav}>
-   <Link href='/' passHref>
-    <a>
+    <header>
+      <nav className={`nav`}>
+        <Link href={"/"}>
+          <a>
+         
     <Image width={95} height={100} src={logo} alt={`logo`} priority />
-    </a>
-    </Link>
-    <nav className={styles.nav}>
-    <Link href="https://www.edmoap.com.au">Home</Link>
-        <Link href='/' passHref className={asPath === '/' ? styles.active : styles.noActive}>All Products</Link>
-        <Link href='/avionics' className={asPath === '/avionics' ? styles.active : styles.noActive}> Avionics </Link>
-        <Link href='/install-supplies' passHref  className={asPath === '/install-supplies' ? styles.active : styles.noActive}>Install Supplies</Link>
-        <Link href='/pilot-supplies' passHref className={asPath === '/pilot-supplies' ? styles.active : styles.noActive}>Pilot Supplies</Link>
-        <Link href='/test-equipment' passHref className={asPath === '/test-equipment' ? styles.active : styles.noActive}>Test Equipment</Link>
-        <Link href='/tools' passHref className={asPath === "/tools" ? styles.active : styles.noActive}>Tools</Link>
-        
-    </nav>
-    </div>
-  )}
-
+  
+          </a>
+        </Link>
+        <div
+          onClick={() => setNavActive(!navActive)}
+          className={`${navActive ? "active" : ""} nav__menu-bar`}
+        >
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <div className={`${navActive ? "active" : ""} nav__menu-list`}>
+          {MENU_LIST.map((menu, idx) => (
+            <div
+              onClick={() => {
+                setActiveIdx(idx);
+                setNavActive(false);
+              }}
+              key={menu.text}
+            >
+              <NavItem active={activeIdx === idx} {...menu} />
+            </div>
+          ))}
+        </div>
+      </nav>
+    </header>
+  );
+};
 
 export default Navbar;

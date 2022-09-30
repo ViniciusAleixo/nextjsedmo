@@ -78,7 +78,6 @@ export default function Home() {
 
         
     prod.push(...first.Products, ...second.Products, ...third.Products, ...fourth.Products, ...fifth.Products, ...sixth.Products)
-    console.log(prod)
     setSearchResults(prod)
     setLoading(true);
   }
