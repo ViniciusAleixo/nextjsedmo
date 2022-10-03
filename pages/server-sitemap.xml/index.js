@@ -61,7 +61,6 @@ console.log(data);
         loc: `https://products.edmoap.com.au/product/${encodeURIComponent(product.Name)}`, lastmod: new Date().toISOString(),
     }));
 
-    console.log(fields);
 
     return getServerSideSitemap(context, fields)
 }

@@ -7,3 +7,4 @@ Host: https://products.edmoap.com.au
 
 # Sitemaps
 Sitemap: https://products.edmoap.com.au/sitemap.xml
+Sitemap: https://products.edmoap.com.au/server-sitemap.xml
