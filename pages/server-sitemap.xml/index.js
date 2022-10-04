@@ -58,7 +58,7 @@ export const getServerSideProps = async (context) => {
     data.push(...first.Products, ...second.Products, ...third.Products, ...fourth.Products, ...fifth.Products, ...sixth.Products)
 
     const fields = data.map((product) => ({
-        loc: `https://products.edmoap.com.au/product/${encodeURIComponent(product.Name).replaceAll('%2F','%252F').replaceAll('))', '%29%29').replaceAll('%20', '%2520')}`, lastmod: new Date().toISOString(),
+        loc: `https://products.edmoap.com.au/product/${encodeURIComponent(product.Name).replaceAll('%2F','%252F').replaceAll('))', '%29%29').replaceAll('%20', '%2520').replaceAll('(', '%28').replaceAll('#','%2523')}`, lastmod: new Date().toISOString(),
     }));
 
 
