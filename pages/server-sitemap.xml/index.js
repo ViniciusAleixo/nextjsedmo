@@ -40,7 +40,7 @@ export const getServerSideProps = async (context) => {
               "api-auth-applicationkey": process.env.REACT_APP_API_KEY,
             },
           }),
-          fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=6&IncludeAttachments=true&limit=1`,
+          fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=6&IncludeAttachments=true&limit=1000`,
           {
               headers: {
                 "api-auth-accountid": process.env.REACT_APP_API_ID,
