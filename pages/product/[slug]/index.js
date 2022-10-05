@@ -43,12 +43,13 @@ export default function Product({data}) {
     <div className={styles.container}>
       <Head>
       <title>{Name}</title>
-      </Head>
       <meta
           name="description"
           content={ShortDescription}
           key="desc"
         />
+      </Head>
+      
       <main>
         
         <div className={styles.containerImgSingle}>
