@@ -142,7 +142,8 @@ export default function Home() {
                     className={styles.cardImg}
                     src={result.Attachments[0].DownloadUrl}
                     alt={result.Name}
-                    width={140} height={110}
+                    layout="fill"
+                    objectFit="contain"
                     
                   /> }
                     </div>

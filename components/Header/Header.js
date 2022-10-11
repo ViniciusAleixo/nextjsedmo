@@ -28,10 +28,11 @@ export const Header = () => {
         </a>
         
       </div>
-       <div className={styles.imgHeaderContainer}>
-           <Image width={550} height={450} src={imgHeader} alt={`header`} priority />
-        </div>
+       
     </div>
+    <div className={styles.imgHeaderContainer}>
+           <Image layout='fill' objectFit='contain' src={imgHeader} alt={`header`} />
+        </div>
     <div id="grid"></div>
   </div>
 

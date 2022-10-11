@@ -78,8 +78,8 @@ const {Products = []} = data;
                     className={styles.cardImg}
                     src={result.Attachments[0].DownloadUrl}
                     alt={result.Name}
-                    width={140} height={140}
-                    layout="intrinsic"
+                    layout="fill"
+                    objectFit="contain"
                     
                   /> }
                     </div>

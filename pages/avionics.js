@@ -119,8 +119,9 @@ const lastPage = Math.ceil(data.length / 15);
                     className={styles.cardImg}
                     src={result.Attachments[0].DownloadUrl}
                     alt={result.Name}
-                    width={110} height={140}
-                    
+                    layout="fill"
+                    objectFit="contain"
+                    priority
                   /> }
                     </div>
                     <h3>{result.Name}</h3>

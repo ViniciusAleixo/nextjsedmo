@@ -29,7 +29,7 @@ const Navbar = () => {
         <Link href={"/"}>
           <a>
          
-    <Image width={95} height={100} src={logo} alt={`logo`} priority />
+    <Image width={96} height={107} src={logo} alt={`logo`} priority />
   
           </a>
         </Link>

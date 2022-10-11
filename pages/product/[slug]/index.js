@@ -4,6 +4,7 @@ import { Header} from '../../../components/Header/Header';
 import Link from "next/link";
 
 import styles from '../../../styles/Home.module.css';
+import { Description } from "@mui/icons-material";
 
 
 export async function getServerSideProps({params: {slug}}) {
@@ -54,15 +55,17 @@ export default function Product({data}) {
         
         <div className={styles.containerImgSingle}>
           <div className={styles.contentSingle}>
-          {Attachments.length === 0  ? (
-                    <span>No Photo</span>
-                  ) :  <Image
-                    className={styles.cardImg}
-                    src={Attachments[0].DownloadUrl}
-                    alt={Name}
-                    width={140} height={110}
-                    
-                  /> }
+           <div className={styles.cardImgSingle}>
+              {Attachments.length === 0  ? (
+                        <span>No Photo</span>
+                      ) :  <Image
+                        
+                        src={Attachments[0].DownloadUrl}
+                        alt={Name}
+                        layout="fill"
+                        objectFit="contain"
+                      /> }
+            </div>
                 <div className={styles.cardContent}>
                   <h3>{Name}</h3>
                   <p><strong>Description:</strong> {ShortDescription}</p>
