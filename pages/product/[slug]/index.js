@@ -54,8 +54,7 @@ export default function Product({data}) {
       <main>
         
         <div className={styles.containerImgSingle}>
-          <div className={styles.contentSingle}>
-           <div className={styles.cardImgSingle}>
+        <div className={styles.cardImgSingle}>
               {Attachments.length === 0  ? (
                         <span>No Photo</span>
                       ) :  <Image
@@ -66,6 +65,8 @@ export default function Product({data}) {
                         objectFit="contain"
                       /> }
             </div>
+          <div className={styles.contentSingle}>
+        
                 <div className={styles.cardContent}>
                   <h3>{Name}</h3>
                   <p><strong>Description:</strong> {ShortDescription}</p>

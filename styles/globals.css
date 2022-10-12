@@ -46,7 +46,7 @@ a {
   top: 50%;
   height:60px;
   width:60px;
-  margin:0px auto;
+  margin:0 auto;
   -webkit-animation: rotation .6s infinite linear;
   -moz-animation: rotation .6s infinite linear;
   -o-animation: rotation .6s infinite linear;
@@ -88,7 +88,10 @@ nav{
   justify-content: space-between;
   align-items: center;
   background-color: #f1f1f1;
+  
 }
+
+
 .nav__menu-bar{
   display: flex;
   flex-direction: column;
@@ -98,6 +101,7 @@ nav{
 
 .nav__menu-bar.active {
   z-index: 99;
+  color: #dedc01 !important; 
 }
 
 .nav__menu-bar.active div:nth-child(2){
@@ -135,6 +139,7 @@ nav{
 }
 .nav__menu-list.active{
   right: 0;
+  color: #dedc01 !important; 
 }
 
 
@@ -185,5 +190,4 @@ nav{
   }
 
 }
-
 
