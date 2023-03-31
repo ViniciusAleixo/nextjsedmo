@@ -125,7 +125,7 @@ const lastPage = Math.ceil(data.length / 15);
                     priority
                   /> }
                     </div>
-                    <h3>{result.Name}</h3>
+                    <p className={styles.titleBold}><strong>{result.Name}</strong></p>
                     <p>Category: {result.Category}</p>
                     <p>SKU: {result.SKU}</p>
                   </a>

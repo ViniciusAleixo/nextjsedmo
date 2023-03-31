@@ -15,7 +15,7 @@ export const Header = () => {
     <div className={styles.headerContent}>
       <div className={styles.headerText}>
         <h1>Quality and Excellence...</h1>
-        <h1>Whatever it takes!</h1>
+        <h2>Whatever it takes!</h2>
         <p>Call us now for a quote</p>
         <p><strong>AUS</strong> - 1300 133 256</p>
         <p id={styles.second}>

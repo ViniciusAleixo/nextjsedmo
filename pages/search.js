@@ -150,7 +150,7 @@ export default function Home() {
                     
                   /> }
                     </div>
-                    <h3>{result.Name}</h3>
+                    <p className={styles.titleBold}><strong>{result.Name}</strong></p>
                     <p>SKU: {result.SKU}</p>
                   </a>
                 </Link>
