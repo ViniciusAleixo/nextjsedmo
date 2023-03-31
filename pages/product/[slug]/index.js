@@ -79,7 +79,7 @@ export default function Product({data}) {
           </div> 
           
         </div>
-          <h3 class={styles.headerDescription}>Description</h3> 
+          <h3 className={styles.headerDescription}>Description</h3> 
           <div dangerouslySetInnerHTML={{__html: Description}}/> 
       </main>
    
