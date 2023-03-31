@@ -16,12 +16,12 @@ export const Header = () => {
       <div className={styles.headerText}>
         <h1>Quality and Excellence...</h1>
         <h1>Whatever it takes!</h1>
-        <h4>Call us now for a quote</h4>
-        <h5><strong>AUS</strong> - 1300 133 256</h5>
-        <h5 id={styles.second}>
+        <p>Call us now for a quote</p>
+        <p><strong>AUS</strong> - 1300 133 256</p>
+        <p id={styles.second}>
           <strong>NZ</strong> - 0800 893 488
-        </h5>
-        <h4 id={styles.third}>Login to see pricing</h4>
+        </p>
+        <p id={styles.third}><strong>Login to see pricing</strong></p>
         <a href="https://edmoap.dearportal.com/Account/Login?ReturnUrl=%2F" target="_blank" rel="noreferrer">
           Go to Store
         </a>
