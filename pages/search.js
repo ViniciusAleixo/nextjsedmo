@@ -100,7 +100,7 @@ export default function Home() {
         }
       );
       prod = await prod.json()
-     
+    
 
  
   }
@@ -130,16 +130,17 @@ export default function Home() {
          
         </form>
        </div>
-        <ul className={styles.grid}>
-      
+        <ul className={styles.grid}>  
+        
           {searchResults && loading ? (searchResults.filter((e) => e.Name.toLowerCase().includes(searchTerm.toLowerCase()) ).map((result) => {
+         
             return (
-              
+             
               <li key={result.ID} className={styles.card}>
-                <Link href={`/product/${encodeURIComponent(result.Name)}`}>
-                  <a href="#">
+                  <Link key={result.ID}  href={`/product/${encodeURIComponent(result.Name)}/${encodeURIComponent(result.SKU)}`}>
+                  <a href={`/product/${encodeURIComponent(result.SKU)}`}>
                     <div className={styles.containerImg}>
-                    {result.Attachments.length === 0  ? (
+                    {result.Attachments.length === 0 || result.Attachments[0].DownloadUrl.includes('pdf')  ? (
                     <span>No Photo</span>
                   ) :  <Image
                     className={styles.cardImg}
@@ -152,9 +153,10 @@ export default function Home() {
                     </div>
                     <p className={styles.titleBold}><strong>{result.Name}</strong></p>
                     <p>SKU: {result.SKU}</p>
-                  </a>
-                </Link>
+                    </a>
+                  </Link>
               </li>
+             
             );
           })
         ): (<p>Loading...</p>)}

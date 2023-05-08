@@ -21,6 +21,7 @@ export default function Home() {
     let { name, value } = event.target
     setFormInputs({...formInputs, [name] : value});
     setSearchTerm(event.target.value);
+
   }
 
   const searchAPI = async() => {
@@ -90,7 +91,7 @@ export default function Home() {
   const search = async(event) => {
     event.preventDefault()
     let prod = await fetch(
-        `https://inventory.dearsystems.com/ExternalApi/v2/Product?sku=${formInputs.searchTerm}&IncludeAttachments=true&limit=15`,
+        `https://inventory.dearsystems.com/ExternalApi/v2/Product?SKU=${formInputs.searchTerm}&IncludeAttachments=true&limit=15`,
         {
           headers: {
             
@@ -133,10 +134,10 @@ export default function Home() {
             return (
               
               <li key={result.ID} className={styles.card}>
-                <Link href={`/product/${encodeURIComponent(result.Name)}`}>
+                <Link href={`/product/SKU/${encodeURIComponent(result.SKU)}`}>
                   <a href="#">
                     <div className={styles.containerImg}>
-                    {result.Attachments.length === 0  ? (
+                    {result.Attachments.length === 0 || result.Attachments[0].DownloadUrl.includes('pdf') ? (
                     <span>No Photo</span>
                   ) :  <Image
                     className={styles.cardImg}

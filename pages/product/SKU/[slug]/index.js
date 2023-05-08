@@ -1,14 +1,14 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Header } from '../../../components/Header/Header';
+import { Header } from '../../../../components/Header/Header';
 import Link from "next/link";
-import styles from '../../../styles/Home.module.css';
+import styles from '../../../../styles/Home.module.css';
 
  
 
 export async function getServerSideProps({params: {slug}}) {
  
- const response = await fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?Name=${slug}&IncludeAttachments=true`,{
+ const response = await fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?SKU=${slug}&IncludeAttachments=true`,{
     headers: {
         "api-auth-accountid": process.env.REACT_APP_API_ID,
         "api-auth-applicationkey": process.env.REACT_APP_API_KEY
