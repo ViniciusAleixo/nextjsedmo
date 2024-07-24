@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 import styles from "../styles/Home.module.css";
 
 const fetchProducts = async (page, products = []) => {
-    const res = await fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=${page}&IncludeAttachments=true&limit=100`, {
+    const res = await fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=${page}&IncludeAttachments=true&limit=1000`, {
         headers: {
             "api-auth-accountid": process.env.REACT_APP_API_ID,
             "api-auth-applicationkey": process.env.REACT_APP_API_KEY,
