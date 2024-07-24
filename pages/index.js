@@ -10,7 +10,7 @@ import styles from "../styles/Home.module.css";
 
 export async function getServerSideProps({ query: { page = 1} }) {
   const response = await fetch(
-    `https://inventory.dearsystems.com/ExternalApi/v2/Product?page=${page}&limit=15&IncludeAttachments=true`,
+    `https://inventory.dearsystems.com/ExternalApi/v2/Product?page=${page}&limit=10&IncludeAttachments=true`,
     {
       headers: {
         "Content-Type": 'application/json',
@@ -21,21 +21,21 @@ export async function getServerSideProps({ query: { page = 1} }) {
   );
 
   const data = await response.json();
-  
-  
+
+
 
   return {
     props: {
       data,
       page: +page,
 
-           
+
     },
   };
 }
 
 export default function Home({data, page}) {
- 
+
 const {Products = []} = data;
 
 
@@ -57,18 +57,18 @@ const {Products = []} = data;
       </Head>
 
       <main>
-     
+
       <Header/>
         <h1 className={styles.title}>All Products</h1>
-    
+
         <SearchButton/>
-       
+
         <ul className={styles.grid}>
-      
+
           {Products.map((result) => {
-            
+
             return (
-              
+
               <li key={result.ID} className={styles.card}>
                 <Link href={`/product/${encodeURIComponent(result.Name)}`} passHref>
                   <a href="#">
@@ -81,7 +81,7 @@ const {Products = []} = data;
                     alt={result.Name}
                     layout="fill"
                     objectFit="contain"
-                    
+
                   /> }
                     </div>
                     <p className={styles.titleBold}><strong>{result.Name}</strong></p>
@@ -118,6 +118,3 @@ const {Products = []} = data;
     </div>
   );
 }
-
-
-

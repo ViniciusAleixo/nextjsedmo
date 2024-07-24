@@ -75,7 +75,7 @@
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
- 
+
   list-style: none;
   margin-left: 0;
   padding-left: 0;
@@ -99,7 +99,7 @@
 .card:hover,
 .card:focus,
 .card:active {
- 
+
   border-color: #FCB402;
 }
 
@@ -209,6 +209,12 @@
   font-size: 0.9em;
 }
 
+.nextPrevious{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
 .nextPrevious button {
   background: #FCB400;
   color: #000;
@@ -258,7 +264,7 @@
 }
 
 .btnstore:hover {
-  border: 2px solid #000; 
+  border: 2px solid #000;
   border-radius: 3px;
 }
 
@@ -274,7 +280,7 @@
 }
 
 .btngoback:hover{
-  border: 2px solid #FCB400; 
+  border: 2px solid #FCB400;
   border-radius: 3px;
 }
 
@@ -288,7 +294,7 @@
   flex-direction: row;
   margin-top: 30px;
   margin-bottom:30px;
-  
+
 }
 
 .contentSingle{
@@ -296,7 +302,7 @@
   margin: 0 auto;
   padding: 0px 20px;
   border-radius: 5px;
- 
+
 }
 
 
@@ -305,7 +311,7 @@
   width: 100%;
   max-width: 250px;
   margin: 0 auto;
-  position: relative; 
+  position: relative;
 }
 
 
@@ -347,7 +353,7 @@
 }
 
 .btngoback:hover{
-  border: 2px solid #FCB400; 
+  border: 2px solid #FCB400;
   border-radius: 3px;
 }
 
@@ -385,7 +391,7 @@
     justify-content: flex-start;
     flex-direction: column;
     margin-top: 30px;
-    
+
   }
   .contentSingle{
     width: 100%;
@@ -397,16 +403,16 @@
     border: none;
   }
   .cardImgSingle {
- 
+
     height: 100%;
     max-height: 30%;
     width: 100%;
     margin: 0 auto;
     margin-bottom: 0;
     padding-bottom: 0;
-    position: relative;    
+    position: relative;
     }
-    
+
 
 
 
@@ -415,16 +421,14 @@
     padding-left: 20px;
     width: 100%;
     margin-top: 20px;
-   
+
   }
 
 
     .buttonShop {
       margin-top: 50px;
     }
-  
-   
-  
+
+
+
 }
-
-
