@@ -1,116 +1,55 @@
 import Head from "next/head";
-import Image from "next/image.js";
+import Image from "next/image";
 import Link from "next/link";
-import { Header } from "../components/Header/Header.js";
-import { useState, useEffect} from 'react';
+import { Header } from "../components/Header/Header";
+import { useState, useEffect, useCallback } from "react";
 import styles from "../styles/Home.module.css";
-
-
-
-
 
 export default function Home() {
   const [searchResults, setSearchResults] = useState([]);
-  const [formInputs, setFormInputs] = useState({});
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const [loading, setLoading] = useState(false);
 
-
-
   const handleInputs = (event) => {
-    let { name, value } = event.target
-    setFormInputs({...formInputs, [name] : value});
-    setSearchTerm(event.target.value);
+    const { value } = event.target;
+    setSearchTerm(value);
+  };
 
-  }
-
-  const searchAPI = async() => {
-    
-
-    const [firstGroup, secondGroup, thirdGroup, fourthGroup, fifthGroup, sixthGroup] = await Promise.all([
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=1&IncludeAttachments=true&limit=1000`,
-        {
-            headers: {
-                "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-                "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-            },
-          }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=2&IncludeAttachments=true&limit=1000`,
-        {
-            headers: {
-                "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-                "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-            },
-          }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=3&IncludeAttachments=true&limit=1000`,
-        {
-            headers: {
-                "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-                "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-            },
-          }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=4&IncludeAttachments=true&limit=1000`,
-        {
-            headers: {
-                "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-                "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-            },
-          }),
-        fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=5&IncludeAttachments=true&limit=1000`,
-        {
-            headers: {
-                "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-                "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-            },
-          }),
-          fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?page=6&IncludeAttachments=true&limit=1000`,
-          {
-              headers: {
-                "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-                "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-              },
-            })
-    ]);
-   let prod =[];
-
-    const [first, second, third, fourth, fifth, sixth] = await Promise.all([
-        firstGroup.json(), secondGroup.json(), thirdGroup.json(), fourthGroup.json(), fifthGroup.json(),sixthGroup.json()
-    ]);
-
-        
-    prod.push(...first.Products, ...second.Products, ...third.Products, ...fourth.Products, ...fifth.Products, ...sixth.Products)
-    setSearchResults(prod)
-    setLoading(true)
-  }
-
+  const fetchProducts = useCallback(async () => {
+    if (!searchTerm.trim()) {
+      setSearchResults([]);
+      return;
+    }
+    setLoading(true);
+    try {
+      const response = await fetch(`https://inventory.dearsystems.com/ExternalApi/v2/Product?SKU=${searchTerm}&IncludeAttachments=true&limit=15`, {
+        headers: {
+          "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
+          "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
+        },
+      });
+      const data = await response.json();
+      setSearchResults(data.Products);
+    } catch (error) {
+      console.error("Error searching products:", error);
+      setSearchResults([]);
+    } finally {
+      setLoading(false);
+    }
+  }, [searchTerm]);
 
   useEffect(() => {
-    searchAPI();
-  }, [])
+    const delayDebounceFn = setTimeout(() => {
+      fetchProducts();
+    }, 300); // Adding a debounce to limit the API calls
 
-  const search = async(event) => {
-    event.preventDefault()
-    let prod = await fetch(
-        `https://inventory.dearsystems.com/ExternalApi/v2/Product?SKU=${formInputs.searchTerm}&IncludeAttachments=true&limit=15`,
-        {
-          headers: {
-            
-            "api-auth-accountid": process.env.NEXT_PUBLIC_API_ID,
-            "api-auth-applicationkey": process.env.NEXT_PUBLIC_API_KEY,
-          },
-        }
-      );
-      prod = await prod.json()
-     
-
- 
-  }
-
+    return () => clearTimeout(delayDebounceFn);
+  }, [searchTerm, fetchProducts]);
 
   return (
-    <div className="styles.container">
+    <div className={styles.container}>
       <Head>
-      <title>EDMO | Avionics, Test Equipment, Install Supplies & Pilot Supplies</title>
+        <title>EDMO | Avionics, Test Equipment, Install Supplies & Pilot Supplies</title>
         <meta
           name="description"
           content="EDMO, the most trusted name in aviation for aircraft electronics, install supplies, wire and cable, tooling, test equipment, tactical communication, pilot."
@@ -119,48 +58,42 @@ export default function Home() {
       </Head>
 
       <main>
-       
-      <Header/>
+        <Header />
         <h1 className={styles.title}>Search by Part-Number</h1>
-       <div>
-        <form onSubmit={search} >
-          <input className={styles.search} name="searchTerm"  type='text' value={searchTerm} onChange={handleInputs} placeholder="Search"/>
-         
-        </form>
-       </div>
+        <div>
+
+          <input className={styles.search} name="searchTerm" type="text" value={searchTerm} onChange={handleInputs} placeholder="Search" />
+        </div>
         <ul className={styles.grid}>
-      
-          {searchResults && loading ? (searchResults.filter((e) => e.SKU.toLowerCase().includes(searchTerm.toLowerCase()) ).map((result) => {
-            return (
-              
+          {loading ? (
+            <p>Loading...</p>
+          ) : searchResults.length > 0 ? (
+            searchResults.map((result) => (
               <li key={result.ID} className={styles.card}>
                 <Link href={`/product/SKU/${encodeURIComponent(result.SKU)}`}>
-                  <a href="#">
+                  <a>
                     <div className={styles.containerImg}>
-                    {result.Attachments.length === 0 || result.Attachments[0].DownloadUrl.includes('pdf') ? (
-                    <span>No Photo</span>
-                  ) :  <Image
-                    className={styles.cardImg}
-                    src={result.Attachments[0].DownloadUrl}
-                    alt={result.Name}
-                    layout="fill"
-                    objectFit="contain"
-                    
-                  /> }
+                      {result.Attachments.length === 0 || result.Attachments[0].DownloadUrl.includes("pdf") ? (
+                        <span>No Photo</span>
+                      ) : (
+                        <Image className={styles.cardImg} src={result.Attachments[0].DownloadUrl} alt={result.Name} layout="fill" objectFit="contain" />
+                      )}
                     </div>
-                    <p className={styles.titleBold}><strong>{result.Name}</strong></p>
+                    <p className={styles.titleBold}>
+                      <strong>{result.Name}</strong>
+                    </p>
                     <p>SKU: {result.SKU}</p>
                   </a>
                 </Link>
               </li>
-            );
-          })
-        ):(<p>Loading...</p>)}
+            ))
+          ) : searchTerm && !loading ? (
+            <p>No products found.</p>
+          ) : (
+            <p>Type a product part-number to search.</p>
+          )}
         </ul>
       </main>
     </div>
   );
 }
-
-
-
